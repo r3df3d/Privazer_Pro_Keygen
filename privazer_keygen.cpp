@@ -25,13 +25,19 @@ HFONT g_hNormalFont = NULL;
 HFONT g_hLicenseFont = NULL;
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
-    // Initialize common controls - use the simpler version
+    // Initialize common controls
     InitCommonControls();
     
     const char CLASS_NAME[] = "PrivaZer Keygen Window";
 
-    // Load icon from resources
-    HICON hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MYICON));
+    // Load icon directly from file - simplest approach
+    HICON hIcon = (HICON)LoadImage(
+        NULL,
+        "icon.ico",
+        IMAGE_ICON,
+        0, 0,
+        LR_LOADFROMFILE | LR_DEFAULTSIZE
+    );
 
     WNDCLASS wc = {};
     wc.lpfnWndProc = WindowProc;
